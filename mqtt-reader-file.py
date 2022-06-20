@@ -4,7 +4,7 @@ import random
 import mysql.connector
 import logging
 import logging.handlers
-
+import password
 
 from paho.mqtt import client as mqtt_client
 
@@ -15,7 +15,7 @@ topic = "python/mqtt-pensando"
 id=format(random.randint(0, 1000))
 client_id = 'python-mqtt-' + id
 username = 'mqtt'
-password = '}*mE8>&Dy#ez'
+password = password.pwd_mqtt
 
 
 def connect_mqtt() -> mqtt_client:
