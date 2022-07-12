@@ -1,8 +1,7 @@
 <!DOCTYPE html> 
-
 <html>
 	<head> 
-	<title>test Pensando</title> 
+	<title>AMD Pensando Demo</title> 
 	 <meta charset="UTF-8" />
 	<script type="text/javascript" src="jquery/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="jquery/jquery.mobile-1.3.2.min.js"></script>
