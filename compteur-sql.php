@@ -20,5 +20,6 @@ else {
 	}
 	echo "<br><font size='20'><b> From DB: $value</b></font><br>"; 
 	}
-
+echo "<br><font size='12'><b>server 1</b></font></br>";
+$mysqli->close();
 ?>
