@@ -1,6 +1,7 @@
 
 <br>
 <?php
+session_start();
 include("password.php");
 
 //read from database
@@ -18,7 +19,13 @@ else {
 			$value="$row[value]";
 		}
 	}
-	echo "<br><font size='20'><b> From DB: $value</b></font><br>"; 
+	if($_SESSION["datasql"] == $value){
+        	echo "<font color='FF000000' size='20'><b>DB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: no new data</b></font><br>";
+		}
+		else {
+			echo "<br><font size='20'><b> DB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: $value</b></font><br>"; 
+			$_SESSION["datasql"] = $value;
+			}
 	}
 echo "<br><font size='12'><b>server 1</b></font></br>";
 $mysqli->close();
