@@ -4,13 +4,13 @@ import random
 import mysql.connector
 import logging
 import logging.handlers
-import password
+import config
 
-sql_pass = password.pwd_mysql
+sql_pass = config.pwd_mysql
 
 def GetValue(value):
 	try:
-		conn = mysql.connector.connect(host="10.29.21.15",user="root",password=password.pwd_mysql, database="MQTT")
+		conn = mysql.connector.connect(host=config.ip_mysql,user=config.user_mysql,password=config.pwd_mysql, database="MQTT")
 		cursor = conn.cursor()
 		cursor.execute("""SELECT %s FROM `mqtt-value` WHERE id = '1'""" % (value))
 		rows = cursor.fetchall()
@@ -22,7 +22,7 @@ def GetValue(value):
 
 def updateValue(value):
 	try:
-		conn = mysql.connector.connect(host="10.29.21.15",user="root",password=sql_pass, database="MQTT")
+		conn = mysql.connector.connect(host=config.ip_mysql,user=config.user_mysql,password=config.pwd_mysql, database="MQTT")
 		cursor = conn.cursor()
 		cursor.execute("""UPDATE `mqtt-value` SET value='%s' WHERE id='1'""" % (value))
 		cursor.execute("commit")
@@ -33,14 +33,14 @@ def updateValue(value):
 
 from paho.mqtt import client as mqtt_client
 
-broker = '10.29.21.15'
+broker = config.ip_mqttbroker
 port = 1883
 topic = "python/mqtt-pensando"
 # generate client ID with pub prefix randomly
 id=format(random.randint(0, 1000))
 client_id = 'python-mqtt-' + id
 username = 'mqtt'
-password = password.pwd_mqtt
+password = config.pwd_mqtt
 
 
 def connect_mqtt() -> mqtt_client:
@@ -77,7 +77,7 @@ def run():
 
 
 if __name__ == '__main__':
-	LOG_FILENAME = '/var/www/html/logging-python-sql.log'
+	LOG_FILENAME = '/var/www/EW-demo-frontend/logging-python-sql.log'
 	# definition du logging
 	my_logger = logging.getLogger('MQTT_PYTHON')
 	my_logger.setLevel(logging.DEBUG)

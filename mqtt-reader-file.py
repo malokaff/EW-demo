@@ -4,18 +4,18 @@ import random
 import mysql.connector
 import logging
 import logging.handlers
-import password
+import config
 
 from paho.mqtt import client as mqtt_client
 
-broker = '10.29.21.15'
+broker = config.ip_mqttbroker
 port = 1883
 topic = "python/mqtt-pensando"
 # generate client ID with pub prefix randomly
 id=format(random.randint(0, 1000))
 client_id = 'python-mqtt-' + id
 username = 'mqtt'
-password = password.pwd_mqtt
+password = config.pwd_mqtt
 
 
 def connect_mqtt() -> mqtt_client:
@@ -39,7 +39,7 @@ def subscribe(client: mqtt_client):
         payload = format(msg.payload.decode())
         #print("old `" + old_payload + "` new " + new_payload)
         #print("Received `" + payload + "` from " + topic)
-        file = open("/var/www/html/data.txt", "w")
+        file = open("/var/www/EW-demo-frontend/data.txt", "w")
         file.write(payload)
         file.close
        
@@ -54,7 +54,7 @@ def run():
 
 
 if __name__ == '__main__':
-	LOG_FILENAME = '/var/www/html/logging-python-file.log'
+	LOG_FILENAME = '/var/www/EW-demo-frontend/logging-python-file.log'
 	# definition du logging
 	my_logger = logging.getLogger('MQTT_PYTHON')
 	my_logger.setLevel(logging.DEBUG)
