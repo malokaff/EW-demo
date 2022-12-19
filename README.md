@@ -10,6 +10,10 @@ This app require 3x VM :
 Backend is running 2 python script to send SQL and MQTT data to mysql/mosquitto VM
 Frontend is displaying data on a webpage
 
+Please find below a diagram that shown the app (with 2 frontend in this case but not mandatory of course)
+
+![Screenshot](images/diagram.jpg)
+
 # EW-demo-frontend
 on the frontend you will need:
 -	apache
