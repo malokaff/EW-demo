@@ -1,10 +1,11 @@
 <?php
+include('config.php');
 //API Authentication:
 //Curl authent:
 $curl = curl_init();
-$body = '{"username": "admin","password": "Pensando0$","tenant": "default"}';
+$body = '{"username": "'.$usr_PSM.'","password": "'.$pwd_PSM.'","tenant": "default"}';
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://10.9.20.71/v1/login',
+  CURLOPT_URL => 'https://'.$ip_psm.'/v1/login',
   CURLOPT_SSL_VERIFYHOST => false,
   CURLOPT_SSL_VERIFYPEER => false,
   CURLOPT_RETURNTRANSFER => true,
@@ -52,7 +53,7 @@ foreach($matches[1] as $item) {
 	$headers = ['Content-Type' => 'text/plain'];
 	//print_r($headers);
 	curl_setopt_array($curl, array(
-	  CURLOPT_URL => 'https://10.9.20.71/configs/security/v1/tenant/default/networksecuritypolicies/pod1-vrf-auto',
+	  CURLOPT_URL => 'https://'.$ip_psm.'/configs/security/v1/tenant/default/networksecuritypolicies/pod1-vrf-auto',
 	  CURLOPT_SSL_VERIFYHOST => false,
 	  CURLOPT_SSL_VERIFYPEER => false,
 	  CURLOPT_RETURNTRANSFER => true,
@@ -86,9 +87,9 @@ if($_GET['action'] == 'post')
 		//2nd request to add policy
 		$headers = ['Cookie'=> 'sid='.$cookies['sid'].'', 'Content-Type' => 'text/plain'];
 		//print_r($headers);
-		$body='{"kind": "NetworkSecurityPolicy","meta": {"name": "autodeny","tenant": "default"},"spec": {"attach-tenant": true,"rules": [{"from-ip-addresses": ["10.29.21.14"],"to-ip-addresses": ["10.29.21.15"],"proto-ports": [{ "protocol": "TCP","ports": "1883"}],"action": "deny","name": "autoblock_mqtt"},{"from-ip-addresses": ["any"],"to-ip-addresses": ["any"],"proto-ports": [{ "protocol": "any"}],"action": "permit","name": "permit_any"}]}}';
+		$body='{"kind": "NetworkSecurityPolicy","meta": {"name": "autodeny","tenant": "default"},"spec": {"attach-tenant": true,"rules": [{"from-ip-addresses": ["'.$ip_backend.'"],"to-ip-addresses": ["'.$ip_mqttbroker.'"],"proto-ports": [{ "protocol": "TCP","ports": "1883"}],"action": "deny","name": "autoblock_mqtt"},{"from-ip-addresses": ["any"],"to-ip-addresses": ["any"],"proto-ports": [{ "protocol": "any"}],"action": "permit","name": "permit_any"}]}}';
 		curl_setopt_array($curl, array(
-		  CURLOPT_URL => 'https://10.9.20.71/configs/security/v1/tenant/default/networksecuritypolicies/pod1-vrf-auto',
+		  CURLOPT_URL => 'https://'.$ip_psm.'/configs/security/v1/tenant/default/networksecuritypolicies/pod1-vrf-auto',
 		  CURLOPT_SSL_VERIFYHOST => false,
 		  CURLOPT_SSL_VERIFYPEER => false,
 		  CURLOPT_RETURNTRANSFER => true,
@@ -131,7 +132,7 @@ if($_GET['action'] == 'post')
 		//print_r($headers);
 		$body='{"kind": "NetworkSecurityPolicy","meta": {"name": "autodeny","tenant": "default"},"spec": {"attach-tenant": true,"rules": [{"from-ip-addresses": ["any"],"to-ip-addresses": ["any"],"proto-ports": [{ "protocol": "any"}],"action": "permit","name": "permit_any"}]}}';
 		curl_setopt_array($curl, array(
-		  CURLOPT_URL => 'https://10.9.20.71/configs/security/v1/tenant/default/networksecuritypolicies/pod1-vrf-auto',
+		  CURLOPT_URL => 'https://'.$ip_psm.'/configs/security/v1/tenant/default/networksecuritypolicies/pod1-vrf-auto',
 		  CURLOPT_SSL_VERIFYHOST => false,
 		  CURLOPT_SSL_VERIFYPEER => false,
 		  CURLOPT_RETURNTRANSFER => true,
