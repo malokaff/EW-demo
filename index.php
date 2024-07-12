@@ -26,7 +26,7 @@
 	</head>
 <body>
 <img src="images/amd_pensando_logo.jpg" width="220">
-<img src="images/Aruba_Networks_logo.svg.png" width="220">
+<img src="images/hpe-aruba.png" width="220">
 
 <!-- header: affichage du compteur (compteur.php) -->
 <div id="compteur-file"></div>
