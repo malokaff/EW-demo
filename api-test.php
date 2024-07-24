@@ -85,7 +85,7 @@ foreach($matches[1] as $item) {
 	}
 
 //2nd request to get rule
-$url = 'https://'.$ip_psm.'/configs/security/v1/tenant/default/networksecuritypolicies/pod1-vrf-auto';
+$url = 'https://'.$ip_psm.'/configs/security/v1/tenant/default/networksecuritypolicies/'.$policy_PSM;
 $headers = ['Cookie'=> 'sid='.$cookies['sid'].'', 'Content-Type' => 'text/plain'];
 $body = '{"username": "'.$usr_PSM.'","password": "'.$pwd_PSM.'","tenant": "default"}';
 $response = sendApiRequest($url,$headers,$body,'./cookie.txt','GET');
@@ -158,7 +158,7 @@ if($_GET['action'] == 'postMQTT')
 	$updatedJson = json_encode($decodedJson, JSON_PRETTY_PRINT);
 
 	//Request to add rule
-	$url = 'https://'.$ip_psm.'/configs/security/v1/tenant/default/networksecuritypolicies/pod1-vrf-auto';
+	$url = 'https://'.$ip_psm.'/configs/security/v1/tenant/default/networksecuritypolicies/'.$policy_PSM;
 	$headers = ['Cookie'=> 'sid='.$cookies['sid'].'', 'Content-Type' => 'text/plain'];
 	$body=$updatedJson;
 	
@@ -219,7 +219,7 @@ if($_GET['action'] == 'postMQTT')
 		//remove rule 
 		echo "we remove the rule";
 		//first need to collect the rule again
-		$url = 'https://'.$ip_psm.'/configs/security/v1/tenant/default/networksecuritypolicies/pod1-vrf-auto';
+		$url = 'https://'.$ip_psm.'/configs/security/v1/tenant/default/networksecuritypolicies/'.$policy_PSM;
 		$headers = ['Cookie'=> 'sid='.$cookies['sid'].'', 'Content-Type' => 'text/plain'];
 		$body = '{"username": "'.$usr_PSM.'","password": "'.$pwd_PSM.'","tenant": "default"}';
 		$response = sendApiRequest($url,$headers,$body,'./cookie.txt','GET');
@@ -261,7 +261,7 @@ if($_GET['action'] == 'postMQTT')
 		//Request to remove rule (update policy)
 		// convert PHP table into JSON
 		$updatedJson = json_encode($decodedJson, JSON_PRETTY_PRINT);
-		$url = 'https://'.$ip_psm.'/configs/security/v1/tenant/default/networksecuritypolicies/pod1-vrf-auto';
+		$url = 'https://'.$ip_psm.'/configs/security/v1/tenant/default/networksecuritypolicies/'.$policy_PSM;
 		$headers = ['Cookie'=> 'sid='.$cookies['sid'].'', 'Content-Type' => 'text/plain'];
 		$body=$updatedJson;
 		
@@ -349,7 +349,7 @@ if($_GET['action']== 'postMYSQL') {
 	$updatedJson = json_encode($decodedJson, JSON_PRETTY_PRINT);
 
 	//Request to add rule
-	$url = 'https://'.$ip_psm.'/configs/security/v1/tenant/default/networksecuritypolicies/pod1-vrf-auto';
+	$url = 'https://'.$ip_psm.'/configs/security/v1/tenant/default/networksecuritypolicies/'.$policy_PSM;
 	$headers = ['Cookie'=> 'sid='.$cookies['sid'].'', 'Content-Type' => 'text/plain'];
 	$body=$updatedJson;
 	
@@ -409,7 +409,7 @@ if($_GET['action']== 'postMYSQL') {
 		//remove rule 
 		echo "we remove the rule";
 		//first need to collect the rule again
-		$url = 'https://'.$ip_psm.'/configs/security/v1/tenant/default/networksecuritypolicies/pod1-vrf-auto';
+		$url = 'https://'.$ip_psm.'/configs/security/v1/tenant/default/networksecuritypolicies/'.$policy_PSM;
 		$headers = ['Cookie'=> 'sid='.$cookies['sid'].'', 'Content-Type' => 'text/plain'];
 		$body = '{"username": "'.$usr_PSM.'","password": "'.$pwd_PSM.'","tenant": "default"}';
 		$response = sendApiRequest($url,$headers,$body,'./cookie.txt','GET');
@@ -451,7 +451,7 @@ if($_GET['action']== 'postMYSQL') {
 		//Request to remove rule (update policy)
 		// convert PHP table into JSON
 		$updatedJson = json_encode($decodedJson, JSON_PRETTY_PRINT);
-		$url = 'https://'.$ip_psm.'/configs/security/v1/tenant/default/networksecuritypolicies/pod1-vrf-auto';
+		$url = 'https://'.$ip_psm.'/configs/security/v1/tenant/default/networksecuritypolicies/'.$policy_PSM;
 		$headers = ['Cookie'=> 'sid='.$cookies['sid'].'', 'Content-Type' => 'text/plain'];
 		$body=$updatedJson;
 		
