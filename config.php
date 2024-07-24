@@ -10,4 +10,5 @@ $usr_mqtt = 'mqtt';
 $pwd_mqtt = 'mqtt';
 $usr_PSM = 'admin';
 $pwd_PSM = 'Pensando0$';
+$policy_PSM = "pod1-vrf-auto";
 ?>
