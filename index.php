@@ -9,9 +9,9 @@
 	<script language="JavaScript" type="text/JavaScript">
 		//On va actualiser le div #temp_pi avec le contenu de la page temp.php et on répête le script toute les 5 secondes.
 		$(document).ready(function() {
-		$("#compteur-file").load("compteur-file.php");
+		$("#compteur-file").load("compteur-mqtt.php");
 		var refreshId = setInterval(function() {
-			$("#compteur-file").load("compteur-file.php");
+			$("#compteur-file").load("compteur-mqtt.php");
 			}, 5000);
 			$.ajaxSetup({ cache: false })
 			});
